@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import { Switch } from "@chakra-ui/switch";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/themes/prism.css";
+import Editor from "react-simple-code-editor";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import darkTheme from "prism-react-renderer/themes/nightOwl";
+import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 
 function TextArea() {
   const [text, setText] = useState("");
@@ -17,7 +25,8 @@ function TextArea() {
   };
 
   const pasteButtonHandler = () => {
-    navigator.clipboard.readText()
+    navigator.clipboard
+      .readText()
       .then((clipText) => {
         setText(text + clipText);
         console.log(clipText);
@@ -32,7 +41,12 @@ function TextArea() {
       <div className="flex flex-row justify-between">
         <div className="flex pb-2 items-center">
           <p className="font-bold pr-2">New Paste</p>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg" onClick={pasteButtonHandler}>+ Paste</button>
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            onClick={pasteButtonHandler}
+          >
+            + Paste
+          </button>
         </div>
 
         <div className="font-bold pb-2">
@@ -44,12 +58,29 @@ function TextArea() {
           />
         </div>
       </div>
-      <textarea
+      <Editor
+        value={text}
+        onValueChange={(code) => setText(code)}
+        highlight={(code) =>
+          isHighlight ? highlight(code, languages.js) : code
+        }
+        padding={10}
+        placeholder="Paste your code here..."
+        style={{
+          fontFamily: '"Fira code", "Fira Mono", monospace',
+          fontSize: 12,
+          minHeight: "400px",
+          backgroundColor: isHighlight
+            ? darkTheme.plain.backgroundColor
+            : lightTheme.plain.backgroundColor,
+        }}
+      />
+      {/* <textarea
         className="w-full p-3 h-[300px] bg-gray-100 rounded-lg overflow-scroll resize-none focus-visible:outline-none"
         placeholder="Paste your code here..."
         onChange={onChangeHandler}
         value={text}
-      ></textarea>
+      ></textarea> */}
     </div>
   );
 }
