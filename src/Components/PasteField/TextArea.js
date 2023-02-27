@@ -8,20 +8,19 @@ import Editor from "react-simple-code-editor";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import darkTheme from "prism-react-renderer/themes/nightOwl";
 import lightTheme from "prism-react-renderer/themes/nightOwlLight";
+import { BiPaste } from "react-icons/bi";
 
 function TextArea() {
   const [text, setText] = useState("");
-  const [isHighlight, setIsHighlight] = useState(false);
+  const [isHighlighted, setisHighlighted] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const onChangeHandler = (e) => {
     setText(e.target.value);
-    console.log(e.target.value);
-    console.log(text);
   };
 
-  const isHighlightHandler = () => {
-    setIsHighlight(!isHighlight);
-    console.log(isHighlight);
+  const isHighlightedHandler = () => {
+    setisHighlighted(!isHighlighted);
   };
 
   const pasteButtonHandler = () => {
@@ -29,23 +28,22 @@ function TextArea() {
       .readText()
       .then((clipText) => {
         setText(text + clipText);
-        console.log(clipText);
       })
       .catch((err) => {
-        console.log("Something went wrong", err);
+        console.log("Could not paste", err);
       });
   };
 
   return (
-    <div className=" pt-4 px-4">
+    <div className=" pt-4 ">
       <div className="flex flex-row justify-between">
         <div className="flex pb-2 items-center">
           <p className="font-bold pr-2">New Paste</p>
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            className="bg-blue-500 text-white rounded-lg px-3 py-2"
             onClick={pasteButtonHandler}
           >
-            + Paste
+            <BiPaste />
           </button>
         </div>
 
@@ -54,7 +52,7 @@ function TextArea() {
           <Switch
             size="md"
             defaultChecked={false}
-            onChange={isHighlightHandler}
+            onChange={isHighlightedHandler}
           />
         </div>
       </div>
@@ -62,7 +60,7 @@ function TextArea() {
         value={text}
         onValueChange={(code) => setText(code)}
         highlight={(code) =>
-          isHighlight ? highlight(code, languages.js) : code
+          isHighlighted ? highlight(code, languages.js) : code
         }
         padding={10}
         placeholder="Paste your code here..."
@@ -70,17 +68,11 @@ function TextArea() {
           fontFamily: '"Fira code", "Fira Mono", monospace',
           fontSize: 12,
           minHeight: "400px",
-          backgroundColor: isHighlight
+          backgroundColor: isDarkTheme
             ? darkTheme.plain.backgroundColor
             : lightTheme.plain.backgroundColor,
         }}
       />
-      {/* <textarea
-        className="w-full p-3 h-[300px] bg-gray-100 rounded-lg overflow-scroll resize-none focus-visible:outline-none"
-        placeholder="Paste your code here..."
-        onChange={onChangeHandler}
-        value={text}
-      ></textarea> */}
     </div>
   );
 }
