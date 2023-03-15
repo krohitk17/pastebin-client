@@ -1,33 +1,30 @@
 import React, { useState } from "react";
 import { Switch } from "@chakra-ui/switch";
-import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
-import "prismjs/themes/prism.css";
+import { highlight, languages } from "prismjs";
 import Editor from "react-simple-code-editor";
-import Highlight, { defaultProps } from "prism-react-renderer";
 import darkTheme from "prism-react-renderer/themes/nightOwl";
 import lightTheme from "prism-react-renderer/themes/nightOwlLight";
 import { BiPaste } from "react-icons/bi";
+import { BodyContext } from "../../Contexts/BodyContext";
 
 function TextArea() {
-  const [text, setText] = useState("");
+  const body = React.useContext(BodyContext);
   const [isHighlighted, setisHighlighted] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const onChangeHandler = (e) => {
-    setText(e.target.value);
-  };
-
   const isHighlightedHandler = () => {
     setisHighlighted(!isHighlighted);
+  };
+
+  const isDarkThemeHandler = () => {
+    setIsDarkTheme(!isDarkTheme);
   };
 
   const pasteButtonHandler = () => {
     navigator.clipboard
       .readText()
       .then((clipText) => {
-        setText(text + clipText);
+        body.setBody(body.body + clipText);
       })
       .catch((err) => {
         console.log("Could not paste", err);
@@ -54,13 +51,19 @@ function TextArea() {
             defaultChecked={false}
             onChange={isHighlightedHandler}
           />
+          <span className="pr-2">Dark Mode</span>
+          <Switch
+            size="md"
+            defaultChecked={false}
+            onChange={isDarkThemeHandler}
+          />
         </div>
       </div>
       <Editor
-        value={text}
-        onValueChange={(code) => setText(code)}
+        value={body.body}
+        onValueChange={body.setBody}
         highlight={(code) =>
-          isHighlighted ? highlight(code, languages.js) : code
+          isHighlighted ? highlight(code,languages.js, "javascript") : code
         }
         padding={10}
         placeholder="Paste your code here..."

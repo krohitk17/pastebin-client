@@ -15,7 +15,14 @@ function Navbar() {
                 <div className="pl-2">PASTEBIN</div>
               </div>
             </li>
-            <NavItem className="ml-auto">
+            <NavItem
+              className="ml-auto"
+              onClick={() => {
+                console.log("clicked");
+                // create a new tab in the browser
+                window.open("https://github.com/servatom");
+              }}
+            >
               <BsGithub size={30} />
             </NavItem>
           </ul>

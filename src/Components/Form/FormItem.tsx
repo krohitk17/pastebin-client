@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormItem({ label, children }) {
+function FormItem({ label, children }: { label: string; children: any }) {
   return (
     <div className="flex pt-2">
       <p className="font-bold pt-2 w-[14em]">{label}</p>

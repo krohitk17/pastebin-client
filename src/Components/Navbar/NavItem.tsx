@@ -1,6 +1,7 @@
 import React from "react";
 
-function NavItem({ children, className, onClick }) {
+function NavItem({ children, className, onClick }: { children: any, className: string, onClick: any })
+{
   return (
     <li
       onClick={onClick}
