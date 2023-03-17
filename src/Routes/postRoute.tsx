@@ -6,20 +6,14 @@ interface PasteData {
   syntax: string;
   burnOnRead: boolean;
   password: string;
+  expiresAt: string;
 }
 
 const postHandler = async (pasteData: PasteData) => {
   const baseUrl = process.env.REACT_APP_BACKEND_URL;
-  const res = await axios
-    .post(baseUrl + "/save", pasteData)
-    .then((res) => {
-      console.log("Paste Created");
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-      return err.response;
-    });
+  const res = await axios.post(baseUrl + "/save", pasteData).catch((err) => {
+    return err.response;
+  });
 
   return res;
 };

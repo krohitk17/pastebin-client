@@ -1,14 +1,17 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
+
 import App from "./App";
 import "./index.css";
-import { LoadingContextProvider } from "./Contexts/LoadingContext";
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(
-  <React.StrictMode>
-    <LoadingContextProvider>
+  <>
+    <Navbar />
+    <div className="container mx-auto">
       <App />
-    </LoadingContextProvider>
-  </React.StrictMode>
+    </div>
+    <Footer />
+  </>
 );

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 interface GetData {
   url: string;
@@ -7,9 +7,7 @@ interface GetData {
 
 export interface GetResponse {
   status: number;
-  data: {
-    body: string;
-  };
+  data: {};
 }
 
 const getHandler = async (getData: GetData): Promise<GetResponse> => {
@@ -18,9 +16,8 @@ const getHandler = async (getData: GetData): Promise<GetResponse> => {
     .get(baseUrl + "/get", {
       params: getData,
     })
-    .catch((err) => {
-      console.log(err);
-      return err.response;
+    .catch((err: AxiosError): AxiosResponse<unknown, any> => {
+      return err.response!;
     });
 
   return {

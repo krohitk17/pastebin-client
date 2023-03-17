@@ -1,9 +1,17 @@
-import React from "react";
-
-function FormItem({ label, children }: { label: string; children: any }) {
+function FormItem({
+  id,
+  className = "",
+  label,
+  children,
+}: {
+  id?: string;
+  className?: string;
+  label: string;
+  children?: any;
+}) {
   return (
-    <div className="flex pt-2">
-      <p className="font-bold pt-2 w-[14em]">{label}</p>
+    <div className={"flex my-1 h-[2.5em] items-center" + className} id={id}>
+      <p className="w-[15em] font-semibold">{label}</p>
       <div className="w-[15em]">{children}</div>
     </div>
   );
