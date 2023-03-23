@@ -1,4 +1,4 @@
-import TextBox from "../../Components/TextField/TextBox";
+import TextBox from "../../Components/TextBox/TextBox";
 import { BiCalendar, BiStopwatch } from "react-icons/bi";
 import SubmitButton from "../../Components/Button";
 

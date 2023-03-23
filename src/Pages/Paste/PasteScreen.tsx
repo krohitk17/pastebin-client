@@ -7,6 +7,7 @@ import NotFound from "./NotFound";
 import PasteArea from "./PasteArea";
 import Unauthorized from "./Unauthorized";
 import { passwordContext } from "../../Contexts/PasswordContext";
+import ServerError from "../ServerError";
 
 export default function PasteScreen() {
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ export default function PasteScreen() {
     } else if (pasteData.status === 404) {
       return <NotFound />;
     } else {
-      return <h1>Server is down, please try again later.</h1>;
+      return <ServerError />;
     }
   };
 

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Switch } from "@chakra-ui/switch";
 import { BiPaste } from "react-icons/bi";
 
-import TextBox from "../../Components/TextField/TextBox";
+import TextBox from "../../Components/TextBox/TextBox";
 import { bodyContext } from "../../Contexts/BodyContext";
 import { syntaxContext } from "../../Contexts/SyntaxContext";
 import SubmitButton from "../../Components/Button";

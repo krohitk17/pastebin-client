@@ -5,6 +5,7 @@ import { SyntaxContextProvider } from "../../Contexts/SyntaxContext";
 import { useState, useEffect } from "react";
 import checkHandler from "../../Routes/checkRoute";
 import Loading from "../../Components/Loading";
+import ServerError from "../ServerError";
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +32,7 @@ export default function HomeScreen() {
           </SyntaxContextProvider>
         </BodyContextProvider>
       ) : (
-        <h1> Server is down, please try again later.</h1>
+        <ServerError />
       )}
     </Loading>
   );
