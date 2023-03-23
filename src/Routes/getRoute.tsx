@@ -4,13 +4,7 @@ interface GetData {
   url: string;
   password: string;
 }
-
-export interface GetResponse {
-  status: number;
-  data: {};
-}
-
-const getHandler = async (getData: GetData): Promise<GetResponse> => {
+const getHandler = async (getData: GetData) => {
   const baseUrl = process.env.REACT_APP_BACKEND_URL;
   const res = await axios
     .get(baseUrl + "/get", {

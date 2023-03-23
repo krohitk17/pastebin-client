@@ -27,6 +27,7 @@ export default function Unauthorized() {
       <p className="my-5">The paste is password protected.</p>
       <Input
         placeholder="Enter password"
+        type="password"
         onChange={(e) => setLocalPassword(e.target.value)}
       />
       <SubmitButton

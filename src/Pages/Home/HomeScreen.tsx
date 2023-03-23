@@ -9,7 +9,6 @@ import Loading from "../../Components/Loading";
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [health, setHealth] = useState(false);
-  console.log("App Rendered");
 
   useEffect(() => {
     const checkHealth = async () => {
@@ -22,23 +21,18 @@ export default function HomeScreen() {
     checkHealth();
   }, []);
 
-  const HealthComponent = () => {
-    if (!health) {
-      return <h1>Server is down, please try again later.</h1>;
-    }
-    return (
-      <BodyContextProvider>
-        <SyntaxContextProvider>
-          <TextArea />
-          <PasteForm />
-        </SyntaxContextProvider>
-      </BodyContextProvider>
-    );
-  };
-
   return (
     <Loading isLoading={isLoading}>
-      <HealthComponent />
+      {health ? (
+        <BodyContextProvider>
+          <SyntaxContextProvider>
+            <TextArea />
+            <PasteForm />
+          </SyntaxContextProvider>
+        </BodyContextProvider>
+      ) : (
+        <h1> Server is down, please try again later.</h1>
+      )}
     </Loading>
   );
 }
