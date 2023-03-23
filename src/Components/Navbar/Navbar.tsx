@@ -4,8 +4,8 @@ import { BsGithub } from "react-icons/bs";
 export default function Navbar() {
   return (
     <>
-      <div className="w-[100%] z-40 bg-opacity-10 backdrop-blur-sm bg-red-500">
-        <div className="container mx-auto flex flex-row py-5 justify-between items">
+      <div className="w-[100%] bg-red-100 sticky top-0 z-50">
+        <div className="container mx-auto flex flex-row py-5 justify-between">
           <a
             href={process.env.REACT_APP_URL}
             className="flex items-center text-2xl"

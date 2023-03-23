@@ -4,7 +4,6 @@ interface PasteData {
   title: string;
   body: string;
   syntax: string;
-  burnOnRead: boolean;
   password: string;
   expiresAt: string;
 }

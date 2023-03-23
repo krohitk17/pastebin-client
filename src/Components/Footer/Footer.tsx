@@ -1,13 +1,9 @@
-import React from "react";
-
-function Footer() {
+export default function Footer() {
   return (
     <>
-      <div className="py-4">
-        <p className="text-center text-gray-500 text-xs">© 2023 by Servatom</p>
+      <div className="bottom-0 w-full text-gray-500 p-5 text-center">
+        <p>© 2023 by Servatom</p>
       </div>
     </>
   );
 }
-
-export default Footer;

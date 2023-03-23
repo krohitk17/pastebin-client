@@ -42,7 +42,12 @@ export default function TextArea() {
 
       <TextBox
         value={body.body}
-        onChange={body.setBody}
+        onChange={(code) => {
+          body.setBody(code);
+          if (code.length > 0) {
+            document.getElementById("paste-url")!.innerHTML = "";
+          }
+        }}
         isDarkTheme={isDarkTheme}
         language={syntax.isHighlighted ? syntax.syntax : "text"}
       />

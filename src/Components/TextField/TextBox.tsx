@@ -1,6 +1,7 @@
 import { highlight, languages } from "prismjs";
 import Editor from "react-simple-code-editor";
-import "prismjs/themes/prism.css";
+
+import "prismjs/themes/prism-tomorrow.css";
 import "./TextBox.css";
 
 const TextBox = ({

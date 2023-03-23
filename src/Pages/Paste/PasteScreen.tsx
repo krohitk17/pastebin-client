@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import getHandler, { GetResponse } from "../../Routes/getRoute";
+import getHandler from "../../Routes/getRoute";
 import LoadingScreen from "../../Components/Loading";
 import NotFound from "./NotFound";
 import PasteArea from "./PasteArea";
@@ -14,7 +14,7 @@ export default function PasteScreen() {
   const url = useParams().url!;
   const password = useContext(passwordContext);
 
-  const [pasteData, setPasteData] = useState<GetResponse>({
+  const [pasteData, setPasteData] = useState({
     status: 0,
     data: {},
   });
