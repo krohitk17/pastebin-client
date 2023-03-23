@@ -1,5 +1,5 @@
-# pastebin-client
-Client
+# PasteBin Client
+Client application for PasteBin using React and Tailwind.
 
 ## How To Contribute
 <ol>
