@@ -16,7 +16,7 @@ function PasteForm() {
   const [title, setTitle] = useState("Untitled");
   const [expiresAt, setExpiresAt] = useState("1d");
 
-  const SubmitButtonHandler = async () => {
+  const SubmitButtonHandler = async (): Promise<void> => {
     setIsLoading(true);
     console.log(expiresAt);
     const url = await postHandler({
@@ -39,6 +39,10 @@ function PasteForm() {
     }
   };
 
+  const syntaxSwitchHandler = (): void => {
+    syntax.setisHighlighted(!syntax.isHighlighted);
+  };
+
   return (
     <div className="pt-4">
       <h1 className="pb-1 border-black border-b-2 font-bold">Paste Settings</h1>
@@ -47,7 +51,7 @@ function PasteForm() {
           <Switch
             className="mx-2"
             defaultChecked={false}
-            onChange={() => syntax.setisHighlighted(!syntax.isHighlighted)}
+            onChange={syntaxSwitchHandler}
           />
         </FormItem>
 
@@ -60,6 +64,13 @@ function PasteForm() {
             <option value="javascript">JavaScript</option>
             <option value="css">CSS</option>
             <option value="html">HTML</option>
+            <option value="typescript">TypeScript</option>
+            <option value="json">JSON</option>
+            <option value="jsx">JSX</option>
+            <option value="tsx">TSX</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c">C</option>
           </Select>
         </FormItem>
 

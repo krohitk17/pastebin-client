@@ -3,6 +3,14 @@ import Editor from "react-simple-code-editor";
 
 import "prismjs/themes/prism-coy.css";
 
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-tsx";
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-python";
+import "prismjs/components/prism-java";
+import "prismjs/components/prism-c";
+
 export default function TextBox({
   value,
   onChange,
@@ -43,7 +51,7 @@ export default function TextBox({
           fontSize: 12,
           minHeight: "40vh",
           color: isDarkTheme ? "#fff" : "#000",
-          backgroundColor: isDarkTheme ? "#1e1e1e" : "#fff",
+          backgroundColor: isDarkTheme ? "#111" : "#fff",
         }}
       />
     </div>
