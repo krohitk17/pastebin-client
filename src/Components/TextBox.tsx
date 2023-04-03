@@ -1,8 +1,7 @@
 import { highlight, languages } from "prismjs";
 import Editor from "react-simple-code-editor";
 
-import "./prism.css";
-import "./prism-dark.css";
+import "prismjs/themes/prism-coy.css";
 
 export default function TextBox({
   value,
@@ -29,7 +28,7 @@ export default function TextBox({
       .join("\n");
 
   return (
-    <div className="overflow-scroll outline outline-1 max-h-[800px]">
+    <div className="overflow-scroll outline outline-1 max-h-[80vh]">
       <Editor
         value={value}
         onValueChange={(code) => onChange(code)}
@@ -37,12 +36,12 @@ export default function TextBox({
         highlight={(code) => hightlightWithLineNumbers(code, language)}
         disabled={disabled}
         textareaClassName="focus outline-none !pl-[50px]"
-        preClassName={"!pl-[50px] " + (isDarkTheme ? "prism-dark" : "prism")}
+        preClassName="!pl-[50px] "
         padding={10}
         style={{
           fontFamily: '"Fira code", "Fira Mono", monospace',
           fontSize: 12,
-          minHeight: "400px",
+          minHeight: "40vh",
           color: isDarkTheme ? "#fff" : "#000",
           backgroundColor: isDarkTheme ? "#1e1e1e" : "#fff",
         }}
