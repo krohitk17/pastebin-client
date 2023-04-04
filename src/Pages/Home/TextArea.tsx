@@ -25,16 +25,16 @@ export default function TextArea() {
   };
 
   return (
-    <div className="pt-4">
+    <div>
       <div className="flex flex-row justify-between">
-        <div className="flex pb-2 items-center">
-          <p className="font-bold pr-2">New Paste</p>
+        <div className="flex items-center">
           <SubmitButton className="h-[5em]" onClick={pasteButtonHandler}>
+            <p className="font-bold pr-2">Paste</p>
             <BiPaste />
           </SubmitButton>
         </div>
 
-        <div className="flex pb-2 items-center">
+        <div className="flex items-center">
           <p className="font-bold pr-2">Dark Mode</p>
           <Switch defaultChecked={false} onChange={isDarkThemeHandler} />
         </div>

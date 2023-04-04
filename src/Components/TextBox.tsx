@@ -36,7 +36,7 @@ export default function TextBox({
       .join("\n");
 
   return (
-    <div className="overflow-scroll outline outline-1 max-h-[80vh]">
+    <div className="overflow-scroll outline outline-1 max-h-[80vh] my-2">
       <Editor
         value={value}
         onValueChange={(code) => onChange(code)}

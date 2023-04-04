@@ -1,5 +1,5 @@
 import TextBox from "../../Components/TextBox";
-import { BiCalendar, BiStopwatch } from "react-icons/bi";
+import { BiCalendar, BiCopy, BiStopwatch } from "react-icons/bi";
 import SubmitButton from "../../Components/Button";
 
 export default function PasteArea({ data }: { data: any }) {
@@ -61,9 +61,10 @@ export default function PasteArea({ data }: { data: any }) {
           <p id="copyAlert" className="text-green-600"></p>
           <SubmitButton
             onClick={copyBody}
-            className="bg-green-500 hover:bg-green-600"
+            className="bg-green-500 hover:bg-green-600 gap-2"
           >
             Copy
+            <BiCopy />
           </SubmitButton>
         </div>
       </div>

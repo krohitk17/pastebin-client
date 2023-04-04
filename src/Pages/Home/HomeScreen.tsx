@@ -15,7 +15,6 @@ export default function HomeScreen() {
     const checkHealth = async () => {
       setIsLoading(true);
       const health = await checkHandler();
-      console.log(health);
       setHealth(health);
       setIsLoading(false);
     };
