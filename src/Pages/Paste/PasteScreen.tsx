@@ -32,10 +32,15 @@ export default function PasteScreen() {
   }, [password.password, url]);
 
   const PasteComponent = () => {
-    if (pasteData.status === 200) {
+    if (pasteData.status === 200 || pasteData.status === 201) {
+      password.setIsWrong(false);
       return <PasteArea data={pasteData.data} />;
-    } else if (pasteData.status === 401) {
-      password.isWrong = password.password === "" ? false : true;
+    } else if (
+      pasteData.status === 400 ||
+      pasteData.status === 401 ||
+      pasteData.status === 403
+    ) {
+      password.setIsWrong(password.password !== "");
       return <Unauthorized />;
     } else if (pasteData.status === 404) {
       return <NotFound />;

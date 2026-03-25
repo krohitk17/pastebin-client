@@ -13,6 +13,8 @@ export function BodyContextProvider({ children }: { children: any }) {
   };
 
   return (
-    <bodyContext.Provider value={context}>{children}</bodyContext.Provider>
+    <bodyContext.Provider value={context}>
+      {children}
+    </bodyContext.Provider>
   );
 }

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { Select, Input, Switch, FormControl } from "@chakra-ui/react";
 
 import FormItem from "../../Components/FormItem";
@@ -46,8 +46,8 @@ function PasteForm() {
     }
   };
 
-  const syntaxSwitchHandler = (): void => {
-    syntax.setisHighlighted(!syntax.isHighlighted);
+  const syntaxSwitchHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    syntax.setisHighlighted(event.target.checked);
   };
 
   return (
@@ -56,7 +56,7 @@ function PasteForm() {
       <FormItem label="Syntax Highlighting">
         <Switch
           className="mx-2"
-          defaultChecked={false}
+          isChecked={syntax.isHighlighted}
           onChange={syntaxSwitchHandler}
         />
       </FormItem>

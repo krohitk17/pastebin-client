@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { Switch } from "@chakra-ui/switch";
+import { ChangeEvent, useContext, useState } from "react";
+import { Switch } from "@chakra-ui/react";
 import { BiPaste } from "react-icons/bi";
 
 import TextBox from "../../Components/TextBox";
@@ -13,8 +13,8 @@ export default function TextArea() {
 
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const isDarkThemeHandler = () => {
-    setIsDarkTheme(!isDarkTheme);
+  const isDarkThemeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setIsDarkTheme(event.target.checked);
   };
 
   const pasteButtonHandler = async () => {
@@ -36,7 +36,7 @@ export default function TextArea() {
 
         <div className="flex items-center">
           <p className="font-bold pr-2">Dark Mode</p>
-          <Switch defaultChecked={false} onChange={isDarkThemeHandler} />
+          <Switch isChecked={isDarkTheme} onChange={isDarkThemeHandler} />
         </div>
       </div>
 
@@ -45,7 +45,10 @@ export default function TextArea() {
         onChange={(code) => {
           body.setBody(code);
           if (code.length > 0) {
-            document.getElementById("paste-url")!.innerHTML = "";
+            const pasteUrlElement = document.getElementById("paste-url");
+            if (pasteUrlElement) {
+              pasteUrlElement.innerHTML = "";
+            }
           }
         }}
         isDarkTheme={isDarkTheme}

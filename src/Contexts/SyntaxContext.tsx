@@ -18,6 +18,8 @@ export function SyntaxContextProvider({ children }: { children: any }) {
   };
 
   return (
-    <syntaxContext.Provider value={context}>{children}</syntaxContext.Provider>
+    <syntaxContext.Provider value={context}>
+      {children}
+    </syntaxContext.Provider>
   );
 }

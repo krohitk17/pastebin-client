@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const checkHandler = (): Promise<boolean> => {
-  const baseUrl = process.env.REACT_APP_BACKEND_URL!;
+  const baseUrl = process.env.REACT_APP_BACKEND_URL || "";
   const isRunning = axios
-    .get(baseUrl)
+    .get(baseUrl + "/health")
     .then((res) => {
       if (res.status === 200) {
         return true;
